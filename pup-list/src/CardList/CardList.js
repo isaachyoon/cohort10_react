@@ -19,4 +19,8 @@ function CardList(props) {
   )  
 }
 
+CardList.defaultProps = {
+  data: []
+}
+
 export default CardList;
