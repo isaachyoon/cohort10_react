@@ -5,11 +5,8 @@ import Card from '../Card/Card';
 function CardList(props) {
   const dogs = props.data.map((dog, i) => 
     <Card 
-      key = {i}
-      name={dog.name}
-      age={dog.age}
-      image={dog.imageUrl}
-      description={dog.description}
+      // dogData={dog}
+      updateLikes={props.updateLikes}
     />
   )
   return(

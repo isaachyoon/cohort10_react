@@ -2,43 +2,27 @@ import React from 'react';
 import './Card.css';
 
 class Card extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      likes: 0
-    }
-    console.log('constructor');
-  }
-
-  componentDidMount = () => {
-    console.log('componentDidMount()');
-  } // Called after component mounts
-
-  componentDidUpdate() {
-    console.log('componentDidUpdate()');
-  } // Called after each render
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  } // Called before component unmounts
-
-  clickHandler = (name) => {
-    console.log(name);
-    this.setState({
-      likes: this.state.likes + 1
-    })
-  }
-
   render() {
     return(
       <div className="card">
-        <img src={this.props.image} alt="profile pic"/>
-        <h1>{this.props.name}</h1>
-        <button onClick={(e) => this.clickHandler(this.props.name)}>{this.state.likes} Likes </button>
-        <p>age: {this.props.age}</p>
-        <p>{this.props.description}</p>
+        <img src={this.props.dogData.imageUrl} alt="profile pic"/>
+        <h1>{this.props.dogData.name}</h1>
+        <button onClick={(e) => this.props.updateLikes(this.props.dogData.id)}>{this.props.dogData.likes} Likes </button>
+        <p>age: {this.props.dogData.age}</p>
+        <p>{this.props.dogData.description}</p>
       </div>
     )  
+  }
+}
+
+Card.defaultProps={
+  dogData: {
+    imageUrl: 'https://source.unsplash.com/mx0DEnfYxic/300x300',
+    name: 'unknown',
+    age: 'unknown',
+    description: 'not available',
+    id: '1',
+    likes: 0
   }
 }
 
