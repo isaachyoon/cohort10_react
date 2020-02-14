@@ -5,13 +5,20 @@ import Card from '../Card/Card';
 function CardList(props) {
   const dogs = props.data.map((dog, i) => 
     <Card 
-      // dogData={dog}
+      key={i}
+      dogData={dog}
       updateLikes={props.updateLikes}
+      releasePup={props.releasePup}
     />
   )
   return(
     <div className="container">
-      {dogs}
+      <div>
+        <button onClick={props.getMorePups}>Get More Pups</button>
+      </div>
+      <div className="pup-container">
+        {dogs}
+      </div>
     </div>
   )  
 }

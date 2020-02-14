@@ -10,6 +10,7 @@ class Card extends React.Component {
         <button onClick={(e) => this.props.updateLikes(this.props.dogData.id)}>{this.props.dogData.likes} Likes </button>
         <p>age: {this.props.dogData.age}</p>
         <p>{this.props.dogData.description}</p>
+        <button onClick={() => this.props.releasePup(this.props.dogData.id)}>Release the pup!</button>
       </div>
     )  
   }

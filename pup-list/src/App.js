@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state={
+      count: 5,
       cardData: [
         {
           id: 1,
@@ -44,7 +45,6 @@ class App extends React.Component {
   }
 
   clickHandler = (id) => {
-    console.log('id', id);
     let newState = this.state.cardData.map(dog => {
       if (id === dog.id) {
         dog.likes = dog.likes + 1;
@@ -55,14 +55,43 @@ class App extends React.Component {
       cardData: newState
     })
   }
-  
 
+  getMorePups = () => {
+    const newPup = {
+      id: this.state.count,
+      name: "tbd",
+      imageUrl: "https://source.unsplash.com/NKN25UfGfkQ/300x300",
+      age: 'tbd',
+      description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+      likes: 0,
+    };
+    const newState = [...this.state.cardData, newPup];
+    this.setState({
+      count: this.state.count + 1,
+      cardData: newState
+    })
+  }
+
+  releasePup = (id) => {
+    const newState = this.state.cardData.filter(dog => {
+      if (id !== dog.id) {
+        return dog
+      }
+    });
+    this.setState({
+      cardData: newState
+    });
+  }
+  
   render() {
     return (
       <div className="App">
         <CardList 
           data={this.state.cardData}
-          updateLikes={this.clickHandler}/>
+          updateLikes={this.clickHandler}
+          getMorePups={this.getMorePups}
+          releasePup={this.releasePup}
+          />
       </div>
     );
   }

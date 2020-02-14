@@ -1,8 +1,14 @@
-.container {
+
+.pup-container {
   width: 100%;
   padding: 1rem;
   border: solid 1px black;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+button {
+  border-radius: 50px;
 }
