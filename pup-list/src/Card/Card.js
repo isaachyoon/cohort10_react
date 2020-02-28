@@ -1,21 +1,26 @@
 import React from 'react';
+import Dummy from '../Dummy/Dummy';
 import './Card.css';
 
 class Card extends React.Component {
 
   navigate = (id) => {
+    //run logic here
     this.props.history.push(`/pups/${id}`)
   }
 
   render() {
     return(
       <div className="card">
-        <img src={this.props.dogData.imageUrl} alt="profile pic" onClick={() => this.navigate(this.props.dogData.id)}/>
+        <img src={this.props.dogData.imageUrl} 
+             alt="profile pic" 
+             onClick={() => this.navigate(this.props.dogData.id)}/>
         <h1>{this.props.dogData.name}</h1>
         <button onClick={(e) => this.props.updateLikes(this.props.dogData.id)}>{this.props.dogData.likes} Likes </button>
         <p>age: {this.props.dogData.age}</p>
         <p>{this.props.dogData.description}</p>
         <button onClick={() => this.props.releasePup(this.props.dogData.id)}>Release the pup!</button>
+        <Dummy></Dummy>
       </div>
     )  
   }

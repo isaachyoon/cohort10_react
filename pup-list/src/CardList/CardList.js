@@ -1,15 +1,16 @@
 import React from 'react';
 import './CardList.css';
 import Card from '../Card/Card';
+import PupContext from '../PupContext';
 
 class CardList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    this.state = {
-      count: props.store.count,
-      cardData: props.store.cardData
-    }
+
+    // this.state = {
+      // count: props.store.count,
+      // cardData: props.store.cardData
+    // }
   }
 
   clickHandler = (id) => {
@@ -53,21 +54,25 @@ class CardList extends React.Component {
 
   render() {
     return(
-      <div className="container">
-        <div>
-          <button onClick={this.getMorePups}>Get More Pups</button>
-        </div>
-        <div className="pup-container">
-          {this.state.cardData.map((dog, i) => 
-          <Card 
-            {...this.props}
-            key={i}
-            dogData={dog}
-            updateLikes={this.clickHandler}
-            releasePup={this.releasePup}
-          />)}
-        </div>
-      </div>
+      <PupContext.Consumer>
+        {(data) => {
+          return (
+            <div className="container">
+              <div>
+                <button onClick={this.getMorePups}>Get More Pups</button>
+              </div>
+              <div className="pup-container">
+                {data.store.cardData.map((dog, i) => 
+                <Card 
+                  {...this.props}
+                  key={i}
+                  dogData={dog}
+                />)}
+              </div>
+            </div>
+        )}
+        } 
+      </PupContext.Consumer>
     )  
   }
 }
