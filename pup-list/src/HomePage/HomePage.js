@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 
 function HomePage(props) {
-  console.log(props);
   return (
     <div className="home-page">
       <Link to={`/pups`} className="home-button">See Pups</Link>

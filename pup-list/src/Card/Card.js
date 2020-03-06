@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css';
 import PupContext from '../PupContext';
+import PropTypes from 'prop-types';
 
 
 class Card extends React.Component {
@@ -11,6 +12,9 @@ class Card extends React.Component {
   }
 
   render() {
+    if (this.props.dogData.id === 2) {
+      throw new Error();
+    }
     return(
       <PupContext.Consumer>
         {(context) => 
@@ -37,9 +41,26 @@ Card.defaultProps={
     name: 'unknown',
     age: 'unknown',
     description: 'not available',
-    id: '1',
+    id: 1,
     likes: 0
   }
+}
+
+Card.propTypes = {
+  prop1: PropTypes.array.isRequired,
+  prop2: PropTypes.oneOf([1,2,3,4,5]).isRequired,
+  prop3: PropTypes.bool.isRequired,
+  prop4: PropTypes.number.isRequired,
+  dogData: PropTypes.shape({
+    imageUrl: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    age: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    likes: PropTypes.bool.isRequired,
+  })
+
+
 }
 
 export default Card;

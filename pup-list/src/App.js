@@ -8,6 +8,7 @@ import Details from './Details/Details';
 import Store from './STORE';
 import { Route, Link, Switch } from 'react-router-dom';
 import PupContext from './PupContext';
+import ErrorPage from './ErrorPage/ErrorPage';
 
 class App extends React.Component {
   constructor() {
